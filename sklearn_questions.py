@@ -169,10 +169,9 @@ class RegistrationSplit(BaseCrossValidator):
 def get_estimator():
     """Return a scikit-learn Pipeline for churn prediction.
 
-    Only columns available at prediction time are used. ``user_id`` and
-    ``registration_month`` are identifiers, ``churn`` is the target, and
-    ``cancel_initiated`` is a leaky copy of the target in the training data.
-    ``has_downgraded`` is dropped as it carries no useful signal.
+    The pipeline is trained on the feature columns of ``churn_train.csv``
+    (all columns except ``user_id``, ``registration_month``, and ``churn``).
+    Removing columns ``cancel_initiated`` and ``has_downgraded``.
 
     Returns
     -------
